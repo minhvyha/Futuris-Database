@@ -3,7 +3,7 @@ const { authKey, authGet, authAddUser } = require('./middleware/middleware');
 const express = require('express');
 const mongoose = require('mongoose');
 const app = express();
-const PORT = process.env.PORT || 3010;
+const PORT = process.env.PORT || 3011;
 const { UserModel } = require('./models/UserModel');
 
 app.use(express.json());
