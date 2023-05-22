@@ -21,6 +21,10 @@ const UserSchema = new mongoose.Schema({
     type: Number,
     default: 0,
   },
+  dob:{
+    type: String,
+    default: "01/01/2000"
+  },
   password: {
     type: String,
     require: true
