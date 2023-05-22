@@ -53,7 +53,7 @@ app.get(
         console.log(err);
       }
       
-      res.json(user);
+      res.json(user !== null? true: false);
       console.log(user);
     });
     // console.log(user);
