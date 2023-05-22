@@ -7,7 +7,9 @@ const UserSchema = new mongoose.Schema({
   },
   assets: {
     type: mongoose.Schema.Types.Mixed,
-    default: {}
+    default: {
+      "AAPL" : 50000
+    }
   },
   email:{
     type: String,
@@ -19,7 +21,7 @@ const UserSchema = new mongoose.Schema({
   },
   totalAssets: {
     type: Number,
-    default: 100000,
+    default: 150000,
   },
   dob:{
     type: String,
