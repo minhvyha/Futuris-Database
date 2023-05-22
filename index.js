@@ -6,6 +6,7 @@ const app = express();
 const PORT = process.env.PORT || 3011;
 const { UserModel } = require('./models/UserModel');
 
+
 app.use(express.json());
 app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
@@ -46,14 +47,14 @@ app.get(
   '/:key/:email/:password',
   [authGet(), authKey(process.env.PASSWORD)],
   (req, res) => {
-    const query = UserModel.findOne({ email: req.params.email, passowrd: req.params.password });
-    query.select('');
+    const query = UserModel.findOne({ email: req.params.email });
+    query.select('+password');
     query.exec(function (err, user) {
       if (err) {
         console.log(err);
       }
       
-      res.json(user !== null? true: false);
+      res.json(user);
       console.log(user);
     });
     // console.log(user);
