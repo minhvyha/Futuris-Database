@@ -6,12 +6,17 @@ const app = express();
 const PORT = process.env.PORT || 3011;
 const { UserModel } = require('./models/UserModel');
 
-
 app.use(express.json());
 app.use(function (req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT,DELETE");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header(
+    'Access-Control-Allow-Methods',
+    'GET,HEAD,OPTIONS,POST,PUT,DELETE'
+  );
+  res.header(
+    'Access-Control-Allow-Headers',
+    'Origin, X-Requested-With, Content-Type, Accept, Authorization'
+  );
   next();
 });
 mongoose.set('strictQuery', false);
@@ -47,19 +52,20 @@ app.get(
   '/:key/:email/:password',
   [authGet(), authKey(process.env.PASSWORD)],
   (req, res) => {
-    const query = UserModel.findOne({ email: req.params.email, password:  req.params.password});
+    const query = UserModel.findOne({
+      email: req.params.email,
+      password: req.params.password,
+    });
     query.select('-password');
     query.exec(function (err, user) {
       if (err) {
         console.log(err);
       }
-      res.json(user)
+      res.json(user);
     });
     // console.log(user);
   }
 );
-
-
 
 app.post(
   '/addUser/:key',
@@ -73,7 +79,7 @@ app.post(
 );
 
 app.post(
-  '/editUser/:key',
+  '/:key/editUser',
   [authKey(process.env.PASSWORD)],
   async (req, res) => {
     const user = req.body;
