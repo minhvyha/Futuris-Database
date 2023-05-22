@@ -94,7 +94,7 @@ app.post(
 );
 
 app.post(
-  '/deleteUser/:key',
+  '/:key/deleteUser',
   [authKey(process.env.PASSWORD)],
   async (req, res) => {
     const email = req.body.email;
