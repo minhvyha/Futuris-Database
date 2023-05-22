@@ -32,7 +32,7 @@ const authAddUser = (UserModel) => {
         console.log(err);
       }
       if (user) {
-        return res.status(400).json('Email already register.');
+        return res.status(400).json(user);
       }
       next();
     });
