@@ -53,8 +53,7 @@ app.get(
       if (err) {
         console.log(err);
       }
-      
-      res.json(user.password === req.params.password? true: false);
+      res.json(user.password === req.params.password? delete user.password: null);
       console.log(user);
     });
     // console.log(user);
