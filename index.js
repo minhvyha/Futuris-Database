@@ -47,20 +47,13 @@ app.get(
   '/:key/:email/:password',
   [authGet(), authKey(process.env.PASSWORD)],
   (req, res) => {
-    const query = UserModel.findOne({ email: req.params.email });
+    const query = UserModel.findOne({ email: req.params.email, password:  req.params.password});
     query.select('');
     query.exec(function (err, user) {
       if (err) {
         console.log(err);
       }
-      if (user.password === req.params.password){
-        delete user.password
-        res.json(user)
-      }
-      else{
-        res.json(null);
-      }
-      console.log(user);
+      res.json(user)
     });
     // console.log(user);
   }
