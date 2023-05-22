@@ -42,6 +42,26 @@ app.get(
   }
 );
 
+app.get(
+  '/:key/:email/:password',
+  [authGet(), authKey(process.env.PASSWORD)],
+  (req, res) => {
+    const query = UserModel.findOne({ email: req.params.email, passowrd: req.params.password });
+    query.select('');
+    query.exec(function (err, user) {
+      if (err) {
+        console.log(err);
+      }
+      
+      res.json(user);
+      console.log(user);
+    });
+    // console.log(user);
+  }
+);
+
+
+
 app.post(
   '/addUser/:key',
   [authAddUser(UserModel), authKey(process.env.PASSWORD)],
