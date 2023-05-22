@@ -15,11 +15,11 @@ const UserSchema = new mongoose.Schema({
   },
   cash: {
     type: Number,
-    default: 0,
+    default: 100000,
   },
   totalAssets: {
     type: Number,
-    default: 0,
+    default: 100000,
   },
   dob:{
     type: String,
