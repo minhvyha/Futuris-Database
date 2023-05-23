@@ -88,7 +88,7 @@ app.post(
         res.json(err);
       } else {
         const query = UserModel.findOne({
-          email: req.params.email,
+          email: user.email,
         });
         query.select('-password');
         query.exec(function (err, user) {
