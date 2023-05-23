@@ -8,7 +8,10 @@ const UserSchema = new mongoose.Schema({
   assets: {
     type: mongoose.Schema.Types.Mixed,
     default: {
-      "AAPL" : 50000
+      "AAPL" : {
+        quanity: 10,
+        value: 1730
+      }
     }
   },
   email:{
