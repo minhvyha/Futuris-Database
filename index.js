@@ -87,7 +87,16 @@ app.post(
       if (err) {
         res.json(err);
       } else {
-        res.json(result);
+        const query = UserModel.findOne({
+          email: req.params.email,
+        });
+        query.select('-password');
+        query.exec(function (err, user) {
+          if (err) {
+            console.log(err);
+          }
+          res.json(user);
+        });
       }
     });
   }
