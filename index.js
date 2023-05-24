@@ -49,6 +49,20 @@ app.get(
 );
 
 app.get(
+  '/:key/newsApi/crypto',
+  [authKey(process.env.PASSWORD)],
+  async (req, res) => {
+    console.log('a')
+    const responseEthereum = await fetch(
+      `https://newsapi.org/v2/everything?q=crypto&apiKey=${process.env.NEWS_API}&language=en`
+    );
+    const result = await responseEthereum.json()
+    res.json(result)
+    // console.log(user);
+  }
+);
+
+app.get(
   '/:key/:email/:password',
   [authGet(), authKey(process.env.PASSWORD)],
   (req, res) => {
