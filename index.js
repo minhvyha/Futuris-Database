@@ -103,6 +103,42 @@ app.post(
 );
 
 app.post(
+  '/:key/:oldPassword/changePassword',
+  [authKey(process.env.PASSWORD)],
+  async (req, res) => {
+    const newUser = req.body;
+    const query = UserModel.findOne({
+      email: newUser.email,
+      password: req.params.oldPassword,
+    });
+    query.select('-password');
+    query.exec(function (err, user) {
+      if (err) {
+        console.log(err);
+      }
+      else{
+        UserModel.updateOne({ email: user.email }, newUser, (err, result) => {
+          if (err) {
+            res.json(err);
+          } else {
+            const query = UserModel.findOne({
+              email: user.email,
+            });
+            query.select('-password');
+            query.exec(function (err, user) {
+              if (err) {
+                console.log(err);
+              }
+              res.json(user);
+            });
+          }
+        });
+      }
+    });
+  }
+);
+
+app.post(
   '/:key/deleteUser',
   [authKey(process.env.PASSWORD)],
   async (req, res) => {

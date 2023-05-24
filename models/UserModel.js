@@ -22,10 +22,6 @@ const UserSchema = new mongoose.Schema({
     type: Number,
     default: 100000,
   },
-  totalAssets: {
-    type: Number,
-    default: 150000,
-  },
   dob:{
     type: String,
     default: "01/01/2000"
