@@ -58,8 +58,8 @@ app.get(
     });
     query.select('-password');
     query.exec(function (err, user) {
-      if (err) {
-        console.log(err);
+      if (user === null) {
+        res.status(401).json('Cannot find account')
       }
       res.json(user);
     });
