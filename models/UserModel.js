@@ -9,7 +9,7 @@ const UserSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.Mixed,
     default: {
       "AAPL" : {
-        quanity: 10,
+        quantity: 10,
         value: 1730
       }
     }
