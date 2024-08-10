@@ -30,6 +30,11 @@ const connectDB = async () => {
   }
 };
 
+app.get('/', (req, res) => {
+  res.send('Hello World');
+}
+);
+
 //Routes go here
 app.get(
   '/:key/:email',

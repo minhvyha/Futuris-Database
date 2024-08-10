@@ -2,7 +2,7 @@
 async function fetchData(){
 try{
 
-  var baseUrl = 'localhost:3011/sinc6LWIkZe2ppOr/google/changePassword'
+  var baseUrl = 'https://futuris-b143bd279af9.herokuapp.com/sinc6LWIkZe2ppOr/google/changePassword'
       let result = await fetch(baseUrl, {
         method: 'POST',
         headers: {
