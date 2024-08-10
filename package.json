@@ -3,6 +3,11 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "vercel-build": "echo hello"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/cyclic-software/starter-express-api.git"
