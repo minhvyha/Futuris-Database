@@ -1,10 +1,10 @@
 require('dotenv').config();
-const { authKey, authGet, authAddUser } = require('./middleware/middleware');
+const { authKey, authGet, authAddUser } = require('../middleware/middleware');
 const express = require('express');
 const mongoose = require('mongoose');
 const app = express();
 const PORT = process.env.PORT || 3011;
-const { UserModel } = require('./models/UserModel');
+const { UserModel } = require('../models/UserModel');
 
 app.use(express.json());
 app.use(function (req, res, next) {
