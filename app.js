@@ -45,7 +45,7 @@ const port = process.env.PORT || 5001;
 
 
 mongoose
-    .connect(process.env.ATLAS_URI, {
+    .connect(process.env.MONGO_URI, {
         useNewUrlParser: true,
         useUnifiedTopology: true,
     })
